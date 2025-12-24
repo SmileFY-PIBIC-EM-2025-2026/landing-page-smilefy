@@ -1,5 +1,5 @@
 #download {
-    background-color: #afdccd;
+    background-color: #76bbbf;
     text-align: center;
     padding-top: 100px;
     padding-bottom: 50px;
@@ -8,7 +8,7 @@
 #smalld {
     font-size: 1.5em;
     font-weight: 200;
-    color: #2b6a6d;
+    color: #17506a;
 }
 
 #download h1 {
@@ -22,7 +22,7 @@
 #pd {
     text-align: center;
     color: aliceblue;
-    background-color: #2b6a6d;
+    background-color: #17506a;
     padding: 20px;
     margin: 20px 0;
     box-shadow: 5px 0 10px #2b6a6d, -5px 0 10px #2b6a6d;
@@ -51,7 +51,7 @@
     margin-top: 10px;
     text-align: left;
     font-weight: 400;
-    color: #2b6a6d;
+    color: #17506a;
     font-size: 1em;
 }
 
