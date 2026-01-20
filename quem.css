@@ -1,0 +1,69 @@
+#quem {
+    background-color: #afdccd;
+    margin: 0;
+    padding: 40px 20px;
+}
+
+#quem_title {
+    text-align: center;
+    font-size: 3.5em;
+    color: #17506a;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: 900;
+    margin: 1em 0;
+}
+
+/* Estilo comum para os containers */
+.flex-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Container específico para o topo */
+.top-row {
+    margin-bottom: 30px; /* Espaço entre o topo e o resto */
+}
+
+/* Item individual */
+.photo-item {
+    flex: 0 1 200px;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Imagens Circulares */
+.circular-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 15px auto;
+    display: block;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    border: 4px solid white;
+    transition: transform 0.3s ease;
+}
+
+.circular-img:hover {
+    transform: scale(1.08);
+}
+
+/* Legendas */
+.description {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.description strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #222;
+    font-size: 16px;
+}
