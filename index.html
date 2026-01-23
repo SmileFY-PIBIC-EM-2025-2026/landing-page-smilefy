@@ -17,14 +17,18 @@
         <img id="nav_logo" src="LogoPNG2.png" alt="Logo_smileFY">
         <h1 id="nav_titulo">SmileFY</h1>
       </div>
-
+      
       <ul id="nav_list">
         <li class="nav_item active"><a href="#home">Home</a></li>
         <li class="nav_item"><a href="#obj">Objetivos</a></li>
         <li class="nav_item"><a href="#modo_de_uso">Modo de uso</a></li>
         <li class="nav_item"><a href="#download">Download (App)</a></li>
-        <li class="nav_item"><a href="#quem-somos">Quem somos?</a></li>
-        <li class="nav_item"><a href="#minha-conta">Minha Conta</a></li>
+        <li class="nav_item"><a href="#quem">Quem somos?</a></li>
+        <li class="nav_item">
+          <button class="theme_toggle" aria-label="Alternar tema">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </li>
       </ul>
 
       <button id="mobile_btn">
@@ -38,8 +42,12 @@
         <li class="nav_item"><a href="#obj">Objetivos</a></li>
         <li class="nav_item"><a href="#modo-de-uso">Modo de uso</a></li>
         <li class="nav_item"><a href="#download">Download (App)</a></li>
-        <li class="nav_item"><a href="#quem-somos">Quem somos?</a></li>
-        <li class="nav_item"><a href="#minha-conta">Minha Conta</a></li>
+        <li class="nav_item"><a href="#quem">Quem somos?</a></li>
+        <li class="nav_item">
+          <button class="theme_toggle" aria-label="Alternar tema">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </li>
       </ul>
     </div>
   </header>
@@ -142,13 +150,14 @@
 
 <!-- Quem Somos + setinha para voltar tudo + arrumar as ancoras-->
   
-  <section id="quem">
+<section id="quem">
     <h1 id="quem_title">Quem somos?</h1>
     <div class="flex-gallery top-row">
-        <div class="photo-item">
-            <img class="circular-img" src="https://placehold.co/300x300/FF5733/white?text=1" alt="Foto">
-            <p class="description"><strong>Danilo Pereira</strong>Orientador COTIL</p>
+        <div class="photo-item" data-nome="Danilo Pereira" data-cargo="Orientador COTIL" data-info="Professor orientador do projeto PIBIC-EM. Atua na área de tecnologia e educação, acompanhando o desenvolvimento técnico e científico da equipe.">
+          <img class="circular-img" src="https://placehold.co/300x300/FF5733/white?text=1" alt="Foto">
+          <p class="description"><strong>Danilo Pereira</strong>Orientador COTIL</p>
         </div>
+<!-- fazer isso com todos-->
         <div class="photo-item">
             <img class="circular-img" src="https://placehold.co/300x300/C70039/white?text=2" alt="Foto">
             <p class="description"><strong>Vanessa Pecorari</strong>Orientadora FOP</p>
@@ -189,7 +198,19 @@
             <p class="description"><strong>UNICAMP</strong>Instituição</p>
         </div>
     </div>
+
+    <div id="profile_note">
+      <button id="close_note">&times;</button>
+      <h2 id="note_name"></h2>
+      <p id="note_role"></p>
+      <p id="note_info"></p>
+    </div>
+
   </section>
+
+  <button id="scroll_top">
+  <i class="fa-solid fa-arrow-up"></i>
+  </button>
 
   <footer>
     <div id="footer_content">
@@ -222,12 +243,14 @@
 
     <div id="footer_copyright">
       &#169
-      2025 SmileFY. Todos os direitos reservados.
+      2026 SmileFY. Todos os direitos reservados.
     </div>
   </footer>
 
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script src="script.js"></script>
 
 <!-- js + cta  -->
 </body>
 </html> 
+
