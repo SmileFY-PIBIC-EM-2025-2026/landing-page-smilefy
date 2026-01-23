@@ -47,7 +47,16 @@
     background-color: #fff;
     border: 3px solid #2b6a6d37;
     box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
+
+#obj article.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 @media screen and (max-width: 580px) {
   #obj_flex {
