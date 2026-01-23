@@ -15,14 +15,93 @@
     overflow-x: hidden
 }
 
+:root {
+  --bg-color: rgba(240, 248, 255, 0.9);
+  --bg-color2: aliceblue;
+  --bg-fusion: #17506a;
+  --text-color: #17506a;
+  --text-color2: black;
+  --text-color-fusion: aliceblue;
+  --text-color-seta: #2b6a6d;
+
+  --grad-1: rgba(var(--primary-rgb), 0.39); /* #17506a64 */
+  --grad-2: rgba(240, 248, 255, 0.86);       /* #f0f8ffdb */
+  --grad-3: rgba(240, 248, 255, 1);          /* #f0f8ffff */
+}
+
+[data-theme="dark"] {
+  --bg-color: rgba(23, 80, 106, 0.9);
+  --bg-color2: #17506a;
+  --bg-fusion: #afdccd;
+  --text-color: aliceblue;
+  --text-color2: white;
+  --text-color-fusion: #17506a;
+  --text-color-seta: white;
+  
+  --grad-3: rgba(23, 80, 106, 0.8);
+  --grad-1: rgba(15, 23, 42, 0.678);
+  --grad-2: rgba(23, 80, 106, 0.8);
+}
+
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    background-color: aliceblue;
+    background-color: var(--bg-color2);
     overflow-x: hidden
 }
+
+/*botão de mudar cor do sistema*/
+.theme_toggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.theme_toggle i.fa-sun {
+  color: #facc15;
+}
+
+
+/*começou o botão de subir*/
+#scroll_top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  border: none;
+  background-color: #17506a;
+  color: white;
+  font-size: 1.2rem;
+
+  cursor: pointer;
+  z-index: 999;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#scroll_top.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+#scroll_top:hover {
+  background-color: #2b6a6d;
+}
+
+/*aqui acabou o botão de subir*/
 
 .btn_default {
     font-size: 20px;
@@ -45,5 +124,4 @@ body {
   100% {
     transform: translateY(0);
   }
-
 }
