@@ -1,10 +1,4 @@
-/*$(document).ready(function() {
-    $('#mobile_btn').on('click', function(){
-        $('#mobile_menu').toggleClass('active');
-    });
-});*/
-
-//animação ao clicar e layout da lista
+//Mobile btn - animação ao clicar e layout da lista
 
 const mobileBtn = document.getElementById('mobile_btn');
 const mobileMenu = document.getElementById('mobile_menu');
@@ -14,7 +8,6 @@ const mobileLinks = document.querySelectorAll('#mobile_menu a');
 mobileBtn.addEventListener('click', () => {
   mobileMenu.classList.toggle('active');
 
-  // troca ícone
   if (mobileMenu.classList.contains('active')) {
     mobileIcon.classList.remove('fa-bars');
     mobileIcon.classList.add('fa-xmark');
@@ -24,7 +17,6 @@ mobileBtn.addEventListener('click', () => {
   }
 });
 
-// fecha ao clicar em um link
 mobileLinks.forEach(link => {
   link.addEventListener('click', () => {
     mobileMenu.classList.remove('active');
@@ -36,7 +28,6 @@ mobileLinks.forEach(link => {
 //Botao pra voltar pro topo
 const scrollTopBtn = document.getElementById('scroll_top');
 
-// aparece ao rolar a página
 window.addEventListener('scroll', () => {
   if (window.scrollY > 300) {
     scrollTopBtn.classList.add('show');
@@ -86,75 +77,125 @@ if (themeButtons.length) {
   }
 }
 
-// Galeria de pessoas com descrição detalhada
+//Animação dos artigos
+const objCards = document.querySelectorAll('#obj article');
+
+const objObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      } else {
+        entry.target.classList.remove('show');
+      }
+    });
+  },
+  {
+    threshold: 0.2
+  }
+);
+
+objCards.forEach((card, index) => {
+  card.style.transitionDelay = `${index * 0.05}s`;
+  objObserver.observe(card);
+});
+
+//Notas no quem.css
+
 const people = document.querySelectorAll('.photo-item');
 const note = document.getElementById('profile_note');
-
 const noteName = document.getElementById('note_name');
 const noteRole = document.getElementById('note_role');
 const noteInfo = document.getElementById('note_info');
 
+let hideTimeout = null; // Variável para controlar o tempo de sumir
+
 function showNote(person) {
+  // Limpa qualquer ordem de "sumir" pendente se o mouse voltar
+  if (hideTimeout) clearTimeout(hideTimeout);
+
   noteName.textContent = person.dataset.nome;
   noteRole.textContent = person.dataset.cargo;
   noteInfo.textContent = person.dataset.info;
 
+  // Precisamos mostrar o elemento primeiro para pegar a largura real dele
+  note.classList.add('show');
+
   const rect = person.getBoundingClientRect();
+  const noteWidth = note.offsetWidth;
+  const padding = 15; // Espacinho entre foto e card
   const scrollY = window.scrollY;
   const scrollX = window.scrollX;
 
-  const noteWidth = note.offsetWidth;
-  const padding = 12;
-
   let top, left;
 
-  if (window.innerWidth >= 1280) {
-    // desktop: ao lado
+  // Lógica Desktop (acima de 768px ou 1024px conforme sua preferência)
+  if (window.innerWidth > 1024) { 
     top = rect.top + scrollY;
-    left = rect.right + padding + scrollX;
-
-    /* se sair da tela, joga pra esquerda
-    if (left + noteWidth > window.innerWidth) {
-      left = rect.left - noteWidth - padding + scrollX;
-    }*/
+    
+    // PEDIDO 1: Lado Esquerdo ou Direito
+    // Verifica se tem o atributo data-lado="esquerdo"
+    if (person.dataset.lado === 'esquerdo') {
+        left = (rect.left + scrollX) - noteWidth - padding;
+    } else {
+        // Padrão: Lado direito
+        left = rect.right + scrollX + padding;
+    }
 
   } else {
-    // tablet e mobile: embaixo
-    top = rect.bottom + padding + scrollY;
-    left = rect.left + scrollX;
+    // PEDIDO 2: Centralizar no Mobile
+    // Coloca o card logo abaixo da foto
+    top = rect.bottom + scrollY + padding;
 
-    /* garante que não ultrapasse a tela
-    if (left + noteWidth > window.innerWidth) {
-      left = window.innerWidth - noteWidth - padding;
+    // A mágica da centralização: (Largura da Tela / 2) - (Largura do Card / 2)
+    left = (window.innerWidth / 2) - (noteWidth / 2);
+    
+    // Ajuste fino: Se o usuário der scroll horizontal ou tela muito pequena
+    // Garante que não saia da tela (margem de segurança de 10px)
+    if (left < 10) left = 10;
+    if ((left + noteWidth) > window.innerWidth) {
+        left = window.innerWidth - noteWidth - 10;
     }
-    if (left < padding) {
-      left = padding;
-    }*/
   }
 
   note.style.top = `${top}px`;
   note.style.left = `${left}px`;
-
-  note.classList.add('show');
 }
 
-function hideNote() {
-  note.classList.remove('show');
+// Função para agendar o fechamento
+function scheduleHide() {
+  hideTimeout = setTimeout(() => {
+    note.classList.remove('show');
+  }, 200); // Espera 200ms antes de fechar (dá tempo do mouse passar da foto pro card)
 }
+
+// PEDIDO 3: Mouse sobre o card não fecha
+// Se o mouse entrar no CARD, cancela o fechamento
+note.addEventListener('mouseenter', () => {
+  if (hideTimeout) clearTimeout(hideTimeout);
+});
+
+// Se o mouse sair do CARD, agenda o fechamento
+note.addEventListener('mouseleave', scheduleHide);
 
 people.forEach(person => {
+  // Entrou na foto -> Mostra
   person.addEventListener('mouseenter', () => showNote(person));
-  person.addEventListener('click', () => showNote(person));
-  person.addEventListener('mouseleave', () => hideNote());
+  
+  // Saiu da foto -> Agenda fechamento (não fecha na hora)
+  person.addEventListener('mouseleave', scheduleHide);
+  
+  // Click (para mobile principalmente)
+  person.addEventListener('click', (e) => {
+      // Impede propagação se clicar na foto, para não fechar instantaneamente
+      e.stopPropagation(); 
+      showNote(person);
   });
+});
 
-  //  person.addEventListener('mouseleave', () => {
-  // if (window.innerWidth > 768) hideNote();
-  // });
-
-// clicar fora fecha
+// Clicar fora fecha imediatamente
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.photo-item') && !e.target.closest('#profile_note')) {
-    hideNote();
+    note.classList.remove('show');
   }
 });
