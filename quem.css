@@ -1,5 +1,5 @@
 #quem {
-    background-color: #afdccd;
+    background-color: var(--bg-color5);
     margin: 0;
     padding: 40px 20px;
 }

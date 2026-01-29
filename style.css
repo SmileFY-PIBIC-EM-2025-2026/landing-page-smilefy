@@ -18,6 +18,10 @@
 :root {
   --bg-color: rgba(240, 248, 255, 0.9);
   --bg-color2: aliceblue;
+  --bg-color3:rgba(240, 248, 255, 0.9);
+  --bg-color4:#afdccd;
+  --bg-color5:rgba(240, 248, 255, 0.9);
+  --bg-footer: #17506a;
   --bg-fusion: #17506a;
   --text-color: #17506a;
   --text-color2: black;
@@ -32,6 +36,10 @@
 [data-theme="dark"] {
   --bg-color: rgba(23, 80, 106, 0.9);
   --bg-color2: #17506a;
+  --bg-color3:#76bbbf;
+  --bg-color4: #17506a;
+  --bg-color5:#afdccd;
+  --bg-footer: #0d1b2a;
   --bg-fusion: #afdccd;
   --text-color: aliceblue;
   --text-color2: white;

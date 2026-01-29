@@ -1,5 +1,5 @@
 #download {
-    background-color: #76bbbf;
+    background-color: var(--bg-color3);
     text-align: center;
     padding-top: 100px;
     padding-bottom: 50px;
@@ -15,17 +15,17 @@
     text-align: center;
     width: 100%;
     font-size: 3.5em;
-    color: aliceblue;
+    color: var(--text-color);
     text-shadow: 3px 3px 5px black;
 }
 
 #pd {
     text-align: center;
-    color: aliceblue;
-    background-color: #17506a;
+    color: var(--text-color);
+    background-color: var(--bg-color4);
     padding: 20px;
     margin: 20px 0;
-    box-shadow: 5px 0 10px #2b6a6d, -5px 0 10px #2b6a6d;
+    box-shadow: 5px 0 10px var(--bg-color4), -5px 0 10px #2b6a6d;
     font-size: 1em;
 }
 
