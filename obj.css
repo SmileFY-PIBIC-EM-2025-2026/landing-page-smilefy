@@ -1,5 +1,5 @@
 #obj {
-    background-color: #76bbbf;
+    background-color: var(--bg-color3);
     margin-top: 50px;
     padding-top: 20px;
 }
@@ -8,21 +8,21 @@
     padding: 20px;
     font-size: 2em;
     text-align: center;
-    color: #17506a;
+    color: var(--text-color);
     font-weight: 900;
 }
 
 /* Ícones */
 #obj article i {
     font-size: 2em;
-    color: #17506a;
+    color: #0f3638;
     margin-bottom: 15px;
     display: block;
 }
 
 #obj article h3 {
     font-size: 1.4em;
-    color: #17506a;
+    color: #0f3638;
     font-weight: 900;
     margin-bottom: 10px;
 }
