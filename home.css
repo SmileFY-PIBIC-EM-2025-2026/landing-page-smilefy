@@ -50,7 +50,11 @@
     }
 
     #home_fusion {
-        margin: 0;
+        width: 90% !important;
+        max-width: 500px;
+        margin: 20px 0;
+        height: auto;
+        min-height: 400px;
     }
 }
 
@@ -60,3 +64,4 @@
     margin: 10px;
   }
 }
+
