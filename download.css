@@ -74,8 +74,11 @@
     width: 100%;
     max-width: 300px;
     height: auto;
-    aspect-ratio: 9 / 19; /* proporção de celular */
+    aspect-ratio: 9 / 19; /* proporção de celular*/
     object-fit: contain;
+    background-color: white; /* Caso o app demore a carregar */
+    z-index: 1; /* Fica atrás da moldura */
+    border-radius: 30px; /* Arredonda os cantos para bater com o iPhone */
 }
 
 .pulse {
@@ -180,4 +183,5 @@
   #smalld {
     font-size: 1em;
   }
+
 }
