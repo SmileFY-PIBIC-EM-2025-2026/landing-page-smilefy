@@ -58,10 +58,12 @@
     }
 }
 
+
 @media screen and (max-width: 380px) {
   #home_title {
     font-size: 2em;
     margin: 10px;
   }
 }
+
 
